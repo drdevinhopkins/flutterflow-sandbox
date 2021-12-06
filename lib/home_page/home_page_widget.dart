@@ -12,14 +12,7 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    textController = TextEditingController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,58 +21,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       backgroundColor: Color(0xFFF5F5F5),
       body: SafeArea(
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TextFormField(
-              onFieldSubmitted: (_) async {
-                await showDialog(
-                  context: context,
-                  builder: (alertDialogContext) {
-                    return AlertDialog(
-                      title: Text('Alert title'),
-                      content: Text('Alert message'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(alertDialogContext),
-                          child: Text('Ok'),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              controller: textController,
-              obscureText: false,
-              decoration: InputDecoration(
-                hintText: '[Some hint text...]',
-                hintStyle: FlutterFlowTheme.bodyText1,
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color(0x00000000),
-                    width: 1,
-                  ),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(4.0),
-                    topRight: Radius.circular(4.0),
-                  ),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color(0x00000000),
-                    width: 1,
-                  ),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(4.0),
-                    topRight: Radius.circular(4.0),
-                  ),
-                ),
-              ),
-              style: FlutterFlowTheme.bodyText1,
-              keyboardType: TextInputType.multiline,
-            ),
             SvgImage(
               width: 300,
               height: 300,
+              networkURL:
+                  'https://avatars.dicebear.com/api/avataaars/testing123.svg?mouth=smile',
             )
           ],
         ),

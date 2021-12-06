@@ -9,10 +9,12 @@ class SvgImage extends StatefulWidget {
     Key key,
     this.width,
     this.height,
+    this.networkURL,
   }) : super(key: key);
 
   final double width;
   final double height;
+  final String networkURL;
 
   @override
   _SvgImageState createState() => _SvgImageState();
@@ -21,7 +23,10 @@ class SvgImage extends StatefulWidget {
 class _SvgImageState extends State<SvgImage> {
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.network(
-        'https://avatars.dicebear.com/api/avataaars/testing.svg?mouth=smile');
+    return Container(
+      width: widget.width,
+      height: widget.height,
+      child: SvgPicture.network(widget.networkURL),
+    );
   }
 }
